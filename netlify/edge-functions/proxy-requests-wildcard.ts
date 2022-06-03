@@ -1,7 +1,7 @@
 import { Context } from "netlify:edge";
 
 const pathRegex = /^.*\/proxy\//;
-const proxyUrl = "https://eoglxf830gsuc1w.m.pipedream.net";
+const proxyUrl = "https://read.uberflip.com/resources-test/";
 
 export default async (request: Request, context: Context) => {
   const path = request.url.replace(pathRegex, "");
