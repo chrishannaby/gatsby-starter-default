@@ -7,10 +7,8 @@ export default async (request: Request, context: Context) => {
   const path = request.url.replace(pathRegex, "");
   const response = await fetch(`${proxyUrl}/${path}`, {
     headers: {
-      Accept: "application/json",
-      "x-custom-header": "Hello world",
+      "Host": "construction.autodesk.com/resources/",
     },
   });
-  const jsonData = await response.json();
-  return context.json(jsonData);
+  return response;
 };

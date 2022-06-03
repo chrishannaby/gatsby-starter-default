@@ -1,5 +1,5 @@
 [[edge_functions]]
-  path = "/proxy/*"
+  path = "/resources/*"
   function = "proxy-requests-wildcard" 
 
 
