@@ -7,7 +7,7 @@ export default async (request: Request, context: Context) => {
   const path = request.url.replace(pathRegex, "");
   const response = await fetch(`${proxyUrl}/${path}`, {
     headers: {
-      "Host": "construction.autodesk.com/resources/",
+      "Host": "adskconstruction.autodesk.com/",
     },
   });
   return response;
