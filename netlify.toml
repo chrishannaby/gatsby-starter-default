@@ -1,0 +1,7 @@
+[[edge_functions]]
+  path = "/proxy/*"
+  function = "proxy-requests-wildcard" 
+
+
+
+
