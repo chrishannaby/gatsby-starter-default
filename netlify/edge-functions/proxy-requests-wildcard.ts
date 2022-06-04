@@ -1,13 +1,13 @@
 import { Context } from "netlify:edge";
 
 const pathRegex = /^.*\/resources\//;
-const proxyUrl = "https://read.uberflip.com/resources-test/";
+const proxyUrl = "https://read.uberflip.com/resources-test";
 
 export default async (request: Request, context: Context) => {
   const path = request.url.replace(pathRegex, "");
   const response = await fetch(`${proxyUrl}/${path}`, {
     headers: {
-       "X-Forwarded-Host": "construction.autodesk.com/resources/",
+       "X-Forwarded-Host": "adskconstruction.autodesk.com/",
     }
   });
   console.log(response)
