@@ -1,7 +1,7 @@
 import { Context } from "netlify:edge";
 
 const pathRegex = /^.*\/proxy\//;
-const proxyUrl = "https://read.uberflip.com/";
+const proxyUrl = "https://read.uberflip.com/resource-test/";
 
 export default async (request: Request, context: Context) => {
   const path = request.url.replace(pathRegex, "");
@@ -10,5 +10,6 @@ export default async (request: Request, context: Context) => {
       "Host": "adskconstruction.autodesk.com/",
     },
   });
+  console.log(response)
   return response;
 };
