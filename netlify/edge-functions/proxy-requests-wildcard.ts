@@ -1,6 +1,6 @@
 import { Context } from "netlify:edge";
 
-const pathRegex = /^.*\/proxy\//;
+const pathRegex = /^.*\/resources\//;
 const proxyUrl = "https://eoglxf830gsuc1w.m.pipedream.net";
 
 export default async (request: Request, context: Context) => {
