@@ -7,13 +7,15 @@ const proxyUrl = "https://read.uberflip.com/resources-test";
 export default async (request: Request, context: Context) => {
   const path = request.url.replace(pathRegex, "");
   const pathWithoutTrailingSlash = path.replace(trailingSlashRegex, "");
-  const response = await fetch(`${proxyUrl}/${pathWithoutTrailingSlash}`, {
+  const url = pathWithoutTrailingSlash
+    ? `${proxyUrl}/${pathWithoutTrailingSlash}`
+    : proxyUrl;
+  const response = await fetch(url, {
     headers: {
       "X-Forwarded-Host": "www-pt.construction.autodesk.com",
       "X-Original-Host": "www-pt.construction.autodesk.com",
-      "X-Netlify-Hostname": "www-pt.construction.autodesk.com"
-    }
+      "X-Netlify-Hostname": "www-pt.construction.autodesk.com",
+    },
   });
-  console.log(response)
   return response;
 };
