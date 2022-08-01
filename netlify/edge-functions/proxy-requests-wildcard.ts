@@ -1,15 +1,17 @@
 import { Context } from "netlify:edge";
 
-const pathRegex = /^.*\/resources\//;
-const proxyUrl = "https://read.uberflip.com/resources";
+const pathRegex = /^.*\/resources-test\//;
+const trailingSlashRegex = /\/$/;
+const proxyUrl = "https://read.uberflip.com/resources-test";
 
 export default async (request: Request, context: Context) => {
   const path = request.url.replace(pathRegex, "");
-  const response = await fetch(`${proxyUrl}/${path}`, {
+  const pathWithoutTrailingSlash = path.replace(trailingSlashRegex, "");
+  const response = await fetch(`${proxyUrl}/${pathWithoutTrailingSlash}`, {
     headers: {
-      "X-Forwarded-Host": "gatsby-edge-functions-proxy-test.netlify.app",
-      "X-Original-Host": "gatsby-edge-functions-proxy-test.netlify.app",
-      "X-Netlify-Hostname": "gatsby-edge-functions-proxy-test.netlify.app"
+      "X-Forwarded-Host": "www-pt.construction.autodesk.com",
+      "X-Original-Host": "www-pt.construction.autodesk.com",
+      "X-Netlify-Hostname": "www-pt.construction.autodesk.com"
     }
   });
   console.log(response)
