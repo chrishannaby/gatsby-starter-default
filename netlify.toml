@@ -2,6 +2,11 @@
   path = "/resources-test/*"
   function = "proxy-requests-wildcard" 
 
+[[edge_functions]]
+  path = "/resources-test"
+  function = "proxy-requests-wildcard" 
+
+
 
 
 
