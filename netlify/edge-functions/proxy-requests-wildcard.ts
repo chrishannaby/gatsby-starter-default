@@ -1,21 +1,20 @@
-import { Context } from "netlify:edge";
-
-const pathRegex = /^.*\/resources-test\//;
-const trailingSlashRegex = /\/$/;
-const proxyUrl = "https://read.uberflip.com/resources-test";
+import { Context } from "netlify:edge"
+const pathRegex = /^.*\/resources-test\/?/
+const trailingSlashRegex = /\/$/
+const proxyUrl = "https://read.uberflip.com/resources-test"
 
 export default async (request: Request, context: Context) => {
-  const path = request.url.replace(pathRegex, "");
-  const pathWithoutTrailingSlash = path.replace(trailingSlashRegex, "");
+  const path = request.url.replace(pathRegex, "")
+  const pathWithoutTrailingSlash = path.replace(trailingSlashRegex, "")
   const url = pathWithoutTrailingSlash
     ? `${proxyUrl}/${pathWithoutTrailingSlash}`
-    : proxyUrl;
+    : proxyUrl
   const response = await fetch(url, {
     headers: {
       "X-Forwarded-Host": "www-pt.construction.autodesk.com",
       "X-Original-Host": "www-pt.construction.autodesk.com",
       "X-Netlify-Hostname": "www-pt.construction.autodesk.com",
     },
-  });
-  return response;
-};
+  })
+  return response
+}
