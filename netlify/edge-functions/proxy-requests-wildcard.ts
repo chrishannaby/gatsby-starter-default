@@ -1,7 +1,7 @@
 import { Context } from "netlify:edge"
 const pathRegex = /^.*\/resources-test\/?/
 const trailingSlashRegex = /\/$/
-const proxyUrl = "https://read.uberflip.com/resources-test"
+const proxyUrl = "https://read.uberflip.com/resources"
 
 export default async (request: Request, context: Context) => {
   const path = request.url.replace(pathRegex, "")
