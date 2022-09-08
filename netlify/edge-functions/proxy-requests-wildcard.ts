@@ -10,7 +10,9 @@ export default async (request: Request, context: Context) => {
     ? `${proxyUrl}/${pathWithoutTrailingSlash}`
     : proxyUrl
   const response = await fetch(url, {
+    ...request,
     headers: {
+      ...request.headers,
       "X-Forwarded-Host": "www-pt.construction.autodesk.com",
       "X-Original-Host": "www-pt.construction.autodesk.com",
       "X-Netlify-Hostname": "www-pt.construction.autodesk.com",
