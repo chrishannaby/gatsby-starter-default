@@ -1,5 +1,5 @@
 import { Context } from "netlify:edge"
-const pathRegex = /^.*\/resources-test\/?/
+const pathRegex = /^.*\/resources\/?/
 const trailingSlashRegex = /\/$/
 const proxyUrl = "https://read.uberflip.com/resources"
 
