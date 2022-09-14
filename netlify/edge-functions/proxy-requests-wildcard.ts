@@ -17,6 +17,13 @@ export default async (request: Request, context: Context) => {
       "X-Original-Host": "www-pt.construction.autodesk.com",
       "X-Netlify-Hostname": "www-pt.construction.autodesk.com",
     },
+    redirect: "manual",
   })
+  if (response.status >= 300 && response.status < 400) {
+    const location = response.headers.get("location")
+    if (location && location.startsWith("/")) {
+      return Response.redirect(`/resources${location}`, response.status)
+    }
+  }
   return response
 }
