@@ -20,9 +20,16 @@ export default async (request: Request, context: Context) => {
     redirect: "manual",
   })
   if (response.status >= 300 && response.status < 400) {
-    const location = response.headers.get("location")
+    const location = response.headers.get("Location")
+
     if (location && location.startsWith("/")) {
-      return Response.redirect(`/resources${location}`, response.status)
+      const prefixedLocation = `/resources${location}`
+      return new Response(null, {
+        status: response.status,
+        headers: {
+          Location: prefixedLocation,
+        },
+      })
     }
   }
   return response
